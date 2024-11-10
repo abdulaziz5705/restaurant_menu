@@ -17,7 +17,7 @@ class CategoryModel(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-class MenuItem(models.Model):
+class MenuItemModel(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -34,7 +34,7 @@ class MenuItem(models.Model):
 
 class CommentModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='comments')
-    name = models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name='comments')
+    name = models.ForeignKey(MenuItemModel, on_delete=models.CASCADE, related_name='comments')
     comment = models.TextField()
 
     def __str__(self):
